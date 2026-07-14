@@ -4,22 +4,81 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy – Explorer App</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* Light theme — matches Explorer's LightColorScheme (Theme.kt) */
+    :root {
+      --color-primary: #10A753;       /* PrimaryGreen */
+      --color-secondary: #585656;     /* SecondaryGrey */
+      --color-bg: #f7f7f5;
+      --color-surface: #ffffff;       /* PrimaryWhite */
+      --color-border: #e5e5e5;
+      --color-text: #1a1a1a;
+      --color-text-muted: #585656;    /* SecondaryGrey (onSurface) */
+      --color-header-bg: #1a1a1a;
+      --color-header-text: #ffffff;
+      --color-header-subtext: #b7b7b7;
+      --color-highlight-bg: #e8f5ed;
+      --color-highlight-border: #10A753;
+      --color-highlight-text: #0d5c33;
+      --color-badge-bg: #e8f5ed;
+      --color-badge-text: #0d7a3f;
+      --color-link: #10A753;
+      --color-footer-text: #999999;
+    }
+
+    /* Dark theme — matches Explorer's DarkColorScheme (Theme.kt) */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-primary: #2fbf74;       /* PrimaryGreenDark, brightened for AA contrast on dark bg */
+        --color-secondary: #999999;     /* SecondaryGreyDark */
+        --color-bg: #141414;
+        --color-surface: #1E1E1E;       /* PrimaryWhiteDark */
+        --color-border: #333333;
+        --color-text: #EEEEEE;          /* PrimaryBlackDark */
+        --color-text-muted: #999999;    /* SecondaryGreyDark (onSurface) */
+        --color-header-bg: #0f0f0f;
+        --color-header-text: #EEEEEE;
+        --color-header-subtext: #999999;
+        --color-highlight-bg: #16281d;
+        --color-highlight-border: #2fbf74;
+        --color-highlight-text: #8fe0af;
+        --color-badge-bg: #16281d;
+        --color-badge-text: #6fd89a;
+        --color-link: #2fbf74;
+        --color-footer-text: #777777;
+      }
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #f7f7f5;
-      color: #1a1a1a;
+      background: var(--color-bg);
+      color: var(--color-text);
       line-height: 1.7;
     }
 
     header {
-      background: #1a1a1a;
-      color: #fff;
-      padding: 48px 24px 40px;
+      background: var(--color-header-bg);
+      color: var(--color-header-text);
+      padding: 40px 24px 36px;
       text-align: center;
+      border-bottom: 3px solid var(--color-primary);
     }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--color-surface);
+      margin-bottom: 16px;
+    }
+
+    .logo svg { width: 32px; height: 32px; }
 
     header h1 {
       font-size: 2rem;
@@ -30,7 +89,7 @@
     header p {
       margin-top: 8px;
       font-size: 0.9rem;
-      color: #aaa;
+      color: var(--color-header-subtext);
     }
 
     main {
@@ -40,27 +99,28 @@
     }
 
     .intro {
-      background: #fff;
+      background: var(--color-surface);
       border-radius: 12px;
       padding: 28px 32px;
       margin-bottom: 32px;
-      border: 1px solid #e5e5e5;
+      border: 1px solid var(--color-border);
+      border-left: 4px solid var(--color-primary);
       font-size: 1rem;
-      color: #444;
+      color: var(--color-text-muted);
     }
 
     section {
-      background: #fff;
+      background: var(--color-surface);
       border-radius: 12px;
       padding: 28px 32px;
       margin-bottom: 20px;
-      border: 1px solid #e5e5e5;
+      border: 1px solid var(--color-border);
     }
 
     section h2 {
       font-size: 1.1rem;
       font-weight: 700;
-      color: #1a1a1a;
+      color: var(--color-text);
       margin-bottom: 14px;
       display: flex;
       align-items: center;
@@ -72,7 +132,7 @@
     }
 
     section p {
-      color: #444;
+      color: var(--color-text-muted);
       margin-bottom: 12px;
       font-size: 0.97rem;
     }
@@ -88,7 +148,7 @@
     ul li {
       padding: 6px 0 6px 20px;
       position: relative;
-      color: #444;
+      color: var(--color-text-muted);
       font-size: 0.97rem;
     }
 
@@ -96,23 +156,23 @@
       content: "→";
       position: absolute;
       left: 0;
-      color: #888;
+      color: var(--color-primary);
     }
 
     .highlight {
-      background: #f0f7ff;
-      border-left: 4px solid #3b82f6;
+      background: var(--color-highlight-bg);
+      border-left: 4px solid var(--color-highlight-border);
       border-radius: 6px;
       padding: 14px 18px;
-      color: #1e3a5f;
+      color: var(--color-highlight-text);
       font-size: 0.93rem;
       margin-top: 12px;
     }
 
     .badge {
       display: inline-block;
-      background: #e8f5e9;
-      color: #2e7d32;
+      background: var(--color-badge-bg);
+      color: var(--color-badge-text);
       font-size: 0.78rem;
       font-weight: 600;
       border-radius: 20px;
@@ -125,19 +185,24 @@
     footer {
       text-align: center;
       font-size: 0.85rem;
-      color: #999;
+      color: var(--color-footer-text);
       padding-bottom: 40px;
     }
 
-    a { color: #3b82f6; text-decoration: none; }
+    a { color: var(--color-link); text-decoration: none; }
     a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
   <header>
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="#10A753" xmlns="http://www.w3.org/2000/svg">
+        <path d="m7.5,16.5l7,-2l2,-7l-7,2zM12,13.5q-0.625,0 -1.062,-0.437T10.5,12t0.438,-1.062T12,10.5t1.063,0.438T13.5,12t-0.437,1.063T12,13.5m0,8.5q-2.075,0 -3.9,-0.788t-3.175,-2.137T2.788,15.9T2,12t0.788,-3.9t2.137,-3.175T8.1,2.788T12,2t3.9,0.788t3.175,2.137T21.213,8.1T22,12t-0.788,3.9t-2.137,3.175t-3.175,2.138T12,22" />
+      </svg>
+    </div>
     <h1>Privacy Policy</h1>
-    <p>Explorer App &nbsp;·&nbsp; Last updated: June 2026</p>
+    <p>Explorer App &nbsp;·&nbsp; Last updated: July 2026</p>
   </header>
 
   <main>
@@ -180,9 +245,13 @@
     <!-- 3. Data Storage -->
     <section>
       <h2><span class="icon">💾</span> Data Storage <span class="badge">Stays on Your Device</span></h2>
-      <p>All personal data — including your recorded routes, location history, photos, and audio notes — is stored exclusively on your device. <strong>None of this data is transmitted to us or any third party.</strong></p>
-      <p>The only information that leaves your device is anonymous, aggregate usage statistics — for example, the total number of routes created. These figures contain no location points, no media, and nothing that could identify you or your activity.</p>
-      <p>If you use Android's automatic backup, your app data may be backed up to your Google account according to the permissions you have granted at the OS level. We recommend reviewing your Android backup settings if you have concerns about this.</p>
+      <p>All personal data you create in Explorer — including your recorded routes, location history, photos, and audio notes — is stored exclusively on your device. <strong>None of this content is transmitted to us or any third party.</strong></p>
+      <p>Explorer uses two Google Firebase services to help us understand app usage and diagnose problems:</p>
+      <ul>
+        <li><strong>Firebase Analytics</strong> — collects anonymous, aggregate usage data such as which screens are viewed and which features are used, along with general device information (e.g., device model, OS version). This never includes your location history, route data, photos, or audio recordings.</li>
+        <li><strong>Firebase Crashlytics</strong> — automatically collects crash reports and diagnostic logs (such as stack traces and device information) if the app crashes, so we can identify and fix bugs. Crash reports do not include your location history, photos, or audio recordings.</li>
+      </ul>
+      <p>These are the only categories of information that leave your device. If you use Android's automatic backup, your app data may also be backed up to your Google account according to the permissions you have granted at the OS level. We recommend reviewing your Android backup settings if you have concerns about this.</p>
     </section>
 
     <!-- 4. Permissions -->
@@ -215,7 +284,7 @@
     <section>
       <h2><span class="icon">⚖️</span> Your Rights</h2>
       <p>Because all personal data is stored locally on your device, you have full control over it at all times. You can view, edit, or delete your data directly within the app, or wipe everything via <strong>Settings → Apps → Explorer → Storage → Clear Data</strong>.</p>
-      <p>The only data we hold is anonymous aggregate statistics (such as total route counts) which cannot be linked back to you. If you have any questions about how this data is used, feel free to contact us using the details below.</p>
+      <p>The only data we (via Firebase Analytics and Crashlytics) hold is anonymous aggregate usage statistics and crash diagnostics, which are not linked back to you as an individual. If you have any questions about how this data is used, feel free to contact us using the details below.</p>
       <p>For users in the European Economic Area (EEA) or United Kingdom, we process anonymous analytics on the lawful basis of <em>legitimate interests</em> in understanding how the app is used at an aggregate level.</p>
     </section>
 
@@ -231,9 +300,8 @@
       <p>If you have any questions, concerns, or requests regarding this privacy policy or your data, please reach out:</p>
       <ul>
         <li><strong>App:</strong> Explorer App</li>
-        <li><strong>Email:</strong> <a href="mailto:privacy@explorerapp.example">privacy@explorerapp.example</a></li>
+        <li><strong>Email:</strong> <a href="mailto:explorer.app.support@gmail.com">explorer.app.support@gmail.com</a></li>
       </ul>
-      <p>Please update the email address above to your actual contact email before publishing.</p>
     </section>
 
   </main>
